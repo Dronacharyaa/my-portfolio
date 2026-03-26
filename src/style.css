@@ -75,6 +75,7 @@ body {
 
 /* ===== SECTIONS ===== */
 .section {
+  margin-top: auto;
   padding: 60px 20px;
   text-align: center;
   width: 100%;
