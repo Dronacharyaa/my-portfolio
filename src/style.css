@@ -1,4 +1,4 @@
-
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -75,8 +75,9 @@ body {
 
 /* ===== SECTIONS ===== */
 .section {
-  margin-top: auto;
   padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto 80px auto; /* bottom spacing between sections */
   text-align: center;
   width: 100%;
   animation: fadeIn 1s ease-in;
@@ -93,7 +94,7 @@ body {
   }
 }
 
-/* ===== IMAGE FIXED ===== */
+/* ===== IMAGE ===== */
 .image-container {
   display: flex;
   justify-content: center;
@@ -211,6 +212,29 @@ body {
   background: orange;
 }
 
+/* ===== TODO ===== */
+.input-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input-box input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-box button {
+  padding: 10px;
+  background: yellow;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
@@ -240,34 +264,15 @@ body {
 
   .section {
     padding: 40px 15px;
+    margin-bottom: 60px;
   }
 
   .skill-card,
   .project-card {
     width: 90%;
   }
-}
-/* ===== TODO ===== */
 
-.input-box {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
+  .input-box input {
+    width: 70%;
+  }
 }
-
-.input-box input {
-  padding: 10px;
-  width: 250px;
-  border-radius: 5px;
-  border: none;
-}
-
-.input-box button {
-  padding: 10px;
-  background: yellow;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
