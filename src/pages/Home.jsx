@@ -1,3 +1,5 @@
+import profile from "../assets/1647096908402.jpg";
+
 function Home() {
   const skills = [
     { name: "HTML", desc: "Structured web pages" },
@@ -12,9 +14,8 @@ function Home() {
     <div className="section">
       <h1>Welcome to My Portfolio</h1>
 
-      {/* Image + Intro */}
       <div className="image-container">
-        <img src="/1647096908402.jpg" alt="Yeash Jain" />
+        <img src={profile} alt="Yeash Jain" />
       </div>
 
       <div className="intro-text">
@@ -25,7 +26,6 @@ function Home() {
         </p>
       </div>
 
-      {/* Skills Section */}
       <div className="skill">
         <h2>Skills</h2>
 

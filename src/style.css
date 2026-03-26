@@ -1,46 +1,52 @@
-body {
+/* ===== RESET ===== */
+* {
   margin: 0;
-  font-family: Arial;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
 }
 
 /* ===== NAVBAR ===== */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: black;
-  color: white;
+  background: #020617;
   padding: 15px 30px;
   position: sticky;
   top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.5);
 }
 
-/* Logo */
 .navbar h2 {
   cursor: pointer;
 }
 
-/* Menu links */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 25px;
 }
 
-/* Links */
 .nav-links a {
   color: white;
   text-decoration: none;
   position: relative;
+  transition: 0.3s;
 }
 
-/* Hover effect */
 .nav-links a:hover {
   color: yellow;
 }
 
-/* Underline animation */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -56,16 +62,152 @@ body {
   width: 100%;
 }
 
-/* Active link */
 .nav-links a.active {
   color: yellow;
 }
 
-/* ===== HAMBURGER ===== */
+/* Hamburger */
 .menu-toggle {
   display: none;
   font-size: 24px;
   cursor: pointer;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== IMAGE FIXED ===== */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.image-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 0 20px rgba(255,255,0,0.4);
+  transition: 0.3s;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== SKILLS ===== */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill-card {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  max-width: 100%;
+  transition: 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  background: #334155;
+}
+
+/* ===== PROJECTS ===== */
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.project-card {
+  width: 260px;
+  max-width: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e293b;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: yellow;
+  color: black;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: orange;
+}
+
+/* ===== CONTACT ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 12px;
+  background: yellow;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background: orange;
 }
 
 /* ===== MOBILE ===== */
@@ -78,13 +220,12 @@ body {
   .nav-links {
     position: absolute;
     top: 60px;
+    left: 0;
     right: 0;
-    background: black;
     width: 100%;
+    background: #020617;
     flex-direction: column;
     align-items: center;
-
-    /* Hidden by default */
     display: none;
   }
 
@@ -92,120 +233,16 @@ body {
     padding: 15px 0;
   }
 
-  /* Show menu when active */
   .nav-links.active {
     display: flex;
   }
-}
 
-/* Sections */
-.section {
-  padding: 60px;
-  text-align: center;
-}
-
-/* Cards */
-.card {
-  border: 1px solid #ccc;
-  margin: 10px auto;
-  padding: 20px;
-  width: 250px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar ul {
-    flex-direction: column;
+  .section {
+    padding: 40px 15px;
   }
 
-  .card {
+  .skill-card,
+  .project-card {
     width: 90%;
   }
 }
-
-.image-container img {
-  width: 150px;
-  border-radius: 50%;
-}
-
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.skill-card {
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 200px;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 400px;
-  margin: auto;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-}
-
-.contact-form button {
-  padding: 10px;
-  background: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background: gray;
-}
-
-.project-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
-
-/* Card Styling */
-.project-card {
-  width: 260px;
-  padding: 20px;
-  border-radius: 12px;
-  background: #f5f5f5;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* 🔥 Hover Effect */
-.project-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* Button */
-.project-card .btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-.project-card .btn:hover {
-  background: #444;
-}
-
