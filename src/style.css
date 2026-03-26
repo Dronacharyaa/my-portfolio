@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  color: white;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+}
+
+/* Logo */
+.navbar h2 {
+  cursor: pointer;
+}
+
+/* Menu links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+/* Links */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: yellow;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: yellow;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.nav-links a.active {
+  color: yellow;
+}
+
+/* ===== HAMBURGER ===== */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: black;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    /* Hidden by default */
+    display: none;
+  }
+
+  .nav-links li {
+    padding: 15px 0;
+  }
+
+  /* Show menu when active */
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Sections */
+.section {
+  padding: 60px;
+  text-align: center;
+}
+
+/* Cards */
+.card {
+  border: 1px solid #ccc;
+  margin: 10px auto;
+  padding: 20px;
+  width: 250px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
+.image-container img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 200px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: gray;
+}
+
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Card Styling */
+.project-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 🔥 Hover Effect */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Button */
+.project-card .btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.project-card .btn:hover {
+  background: #444;
+}
+
