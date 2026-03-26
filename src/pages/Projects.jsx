@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
+
 function Projects() {
   const projects = [
     {
       title: "Portfolio Website",
       desc: "A personal portfolio built using React.",
-      link: "#"
+      link: "/" // Home page
     },
     {
       title: "Todo App",
       desc: "A task manager with add/delete features.",
-      link: "#"
+      link: "/todo" // Todo page
     },
     {
       title: "Weather App",
       desc: "Shows live weather using API.",
-      link: "#"
+      link: "#" // placeholder
     }
   ];
 
@@ -27,9 +29,9 @@ function Projects() {
             <h3>{proj.title}</h3>
             <p>{proj.desc}</p>
 
-            <a href={proj.link} className="btn">
+            <Link to={proj.link} className="btn">
               View Project
-            </a>
+            </Link>
           </div>
         ))}
       </div>

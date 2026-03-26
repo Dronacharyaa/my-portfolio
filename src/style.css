@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -245,4 +245,51 @@ body {
   .project-card {
     width: 90%;
   }
+}
+/* ===== TODO ===== */
+
+.input-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input-box input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-box button {
+  padding: 10px;
+  background: yellow;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.todo-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.todo-list li {
+  background: #1e293b;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.todo-list li span {
+  cursor: pointer;
+}
+
+.todo-list li.done span {
+  text-decoration: line-through;
+  color: gray;
 }
