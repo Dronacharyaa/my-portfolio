@@ -1,27 +1,41 @@
 import { useState, useEffect } from "react";
+import "./todo.css";
 
 function Todo() {
-  const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [input, setInput] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
+  const [filter, setFilter] = useState("All");
 
-  // Load from localStorage
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("tasks"));
-    if (saved) setTasks(saved);
-  }, []);
-
-  // Save to localStorage
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   const addTask = () => {
-    if (task.trim() === "") return;
-    setTasks([...tasks, { text: task, completed: false }]);
-    setTask("");
+    if (!input.trim()) return;
+
+    if (editIndex !== null) {
+      const updatedTasks = [...tasks];
+      updatedTasks[editIndex].text = input;
+      setTasks(updatedTasks);
+      setEditIndex(null);
+    } else {
+      setTasks([
+        ...tasks,
+        {
+          text: input,
+          completed: false,
+          date: new Date().toLocaleString(),
+        },
+      ]);
+    }
+    setInput("");
   };
 
-  const toggleTask = (index) => {
+  const toggleComplete = (index) => {
     const updated = [...tasks];
     updated[index].completed = !updated[index].completed;
     setTasks(updated);
@@ -31,25 +45,63 @@ function Todo() {
     setTasks(tasks.filter((_, i) => i !== index));
   };
 
-  return (
-    <div className="section">
-      <h1>To-Do App</h1>
+  const editTask = (index) => {
+    setInput(tasks[index].text);
+    setEditIndex(index);
+  };
 
-      <div className="input-box">
+  const filteredTasks =
+    filter === "All" ? tasks : tasks.filter((t) => t.completed);
+
+  return (
+    <div className="section todo-section">
+      <h2>Todo List</h2>
+
+      {/* Input */}
+      <div className="todo-input">
         <input
           type="text"
-          placeholder="Enter task..."
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add a new task..."
         />
-        <button onClick={addTask}>Add</button>
+        <button onClick={addTask}>{editIndex !== null ? "Update" : "Add"}</button>
       </div>
 
+      {/* Filter */}
+      <div className="todo-filter">
+        <button
+          className={filter === "All" ? "active" : ""}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <button
+          className={filter === "Completed" ? "active" : ""}
+          onClick={() => setFilter("Completed")}
+        >
+          Completed
+        </button>
+      </div>
+
+      {/* Tasks */}
       <ul className="todo-list">
-        {tasks.map((t, i) => (
-          <li key={i} className={t.completed ? "done" : ""}>
-            <span onClick={() => toggleTask(i)}>{t.text}</span>
-            <button onClick={() => deleteTask(i)}>❌</button>
+        {filteredTasks.map((task, index) => (
+          <li
+            key={index}
+            className={`todo-item ${task.completed ? "completed" : ""}`}
+          >
+            <div className="task-info">
+              <span>{task.text}</span>
+              <small>{task.date}</small>
+            </div>
+            <div className="task-actions">
+              <button onClick={() => toggleComplete(index)}>
+                {task.completed ? "↩️" : "✅"}
+              </button>
+              <button onClick={() => editTask(index)}>✏️</button>
+              <button onClick={() => deleteTask(index)}>🗑️</button>
+            </div>
           </li>
         ))}
       </ul>

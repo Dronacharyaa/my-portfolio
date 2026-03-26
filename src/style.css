@@ -270,26 +270,3 @@ body {
   border-radius: 5px;
 }
 
-.todo-list {
-  list-style: none;
-  margin-top: 20px;
-}
-
-.todo-list li {
-  background: #1e293b;
-  padding: 10px;
-  margin: 10px auto;
-  max-width: 400px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-}
-
-.todo-list li span {
-  cursor: pointer;
-}
-
-.todo-list li.done span {
-  text-decoration: line-through;
-  color: gray;
-}
