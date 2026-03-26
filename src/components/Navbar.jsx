@@ -6,19 +6,59 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h2>My Portfolio</h2>
+      {/* Logo */}
+      <h2>
+        <NavLink 
+          to="/" 
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          My Portfolio
+        </NavLink>
+      </h2>
 
       {/* Hamburger */}
       <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
         ☰
       </div>
 
-      {/* Menu */}
+      {/* Menu Links */}
       <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/projects">Projects</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
+        <li>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => isActive ? "active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => isActive ? "active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/projects" 
+            className={({ isActive }) => isActive ? "active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            Projects
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => isActive ? "active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
